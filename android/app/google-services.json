@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "151863429718",
+    "project_id": "eval-sis22a",
+    "storage_bucket": "eval-sis22a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151863429718:android:b604c4a485dbd5107689f7",
+        "android_client_info": {
+          "package_name": "com.johancarlos.eval_sis22"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjJehAwlJuWpvbng54-3FyLyxlQ4zprtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
