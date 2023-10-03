@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'crear_datos.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -11,47 +13,124 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Future<List> getMensajes() async {
+    List chats = [];
+    CollectionReference collectionReference =
+    FirebaseFirestore.instance.collection("tb_productos");
+    QuerySnapshot mensajes = await collectionReference.get();
+    if (mensajes.docs.length != 0) {
+      for (var doc in mensajes.docs) {
+        print(doc.data());
+        chats.add(doc.data());
+      }
+    }
+    return chats;
+  }
 
-  void _incrementCounter() {
+  void refreshData() {
     setState(() {
-
-      _counter++;
+      getMensajes();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
+        backgroundColor: Colors.blue,
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => nuevodatos()),
+              ).then((_) {
+                refreshData();
+              });
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.info),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => acercanosotros()),
+              );
+            },
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: FutureBuilder(
+        future: getMensajes(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          } else if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data?.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  elevation: 5,
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "${snapshot.data?[index]["nombre"]}",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    subtitle: Row(
+                      children: [
+                        Icon(Icons.attach_money, color: Colors.green),
+                        Text(
+                          "Precio: ${snapshot.data?[index]["precio"].toString()} | ",
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Icon(Icons.store, color: Colors.orange),
+                        Text(
+                          "Stock: ${snapshot.data?[index]["stock"].toString()}",
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          } else {
+            return const Center(
+              child: Text('No hay datos disponibles.'),
+            );
+          }
+        },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        onPressed: refreshData,
+        tooltip: 'Refresh',
+        child: const Icon(Icons.refresh),
+      ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: MyHomePage(title: 'Productos'),
+  ));
 }
