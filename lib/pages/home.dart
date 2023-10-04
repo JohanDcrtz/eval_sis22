@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import 'acerca_nosotros.dart';
 import 'crear_datos.dart';
 
+void main() {
+  runApp(const MaterialApp(
+    home: MyHomePage(title: 'Productos'),
+  ));
+}
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -41,8 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.blue,
         title: Text(widget.title),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
+          ElevatedButton(
             onPressed: () {
               Navigator.push(
                 context,
@@ -51,15 +56,34 @@ class _MyHomePageState extends State<MyHomePage> {
                 refreshData();
               });
             },
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              elevation: 2.0,
+            ),
+            child: Text(
+              'Nuevos Datos',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
           ),
-          IconButton(
-            icon: Icon(Icons.info),
+          ElevatedButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => acercanosotros()),
               );
             },
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              elevation: 2.0,
+            ),
+            child: Text(
+              'Acerca de Nosotros',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
       ),
@@ -84,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: ListTile(
                     title: Text(
                       "${snapshot.data?[index]["nombre"]}",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
@@ -95,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icon(Icons.attach_money, color: Colors.green),
                         Text(
                           "Precio: ${snapshot.data?[index]["precio"].toString()} | ",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
                           ),
@@ -103,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icon(Icons.store, color: Colors.orange),
                         Text(
                           "Stock: ${snapshot.data?[index]["stock"].toString()}",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
                           ),
@@ -128,10 +152,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: MyHomePage(title: 'Productos'),
-  ));
 }
