@@ -41,6 +41,7 @@ class _nuevodatosState extends State<nuevodatos> {
               decoration: InputDecoration(
                 labelText: 'Nombre del producto',
                 border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.shopping_cart),
               ),
             ),
             SizedBox(height: 20),
@@ -50,6 +51,7 @@ class _nuevodatosState extends State<nuevodatos> {
               decoration: InputDecoration(
                 labelText: 'Precio del producto',
                 border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.attach_money),
               ),
             ),
             SizedBox(height: 20),
@@ -59,6 +61,7 @@ class _nuevodatosState extends State<nuevodatos> {
               decoration: InputDecoration(
                 labelText: 'Stock del producto',
                 border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.storage),
               ),
             ),
             SizedBox(height: 20),
@@ -102,7 +105,14 @@ class _nuevodatosState extends State<nuevodatos> {
                   );
                 }
               },
-              child: Text("Guardar"),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.save),
+                  SizedBox(width: 8),
+                  Text("Guardar"),
+                ],
+              ),
             ),
           ],
         ),
