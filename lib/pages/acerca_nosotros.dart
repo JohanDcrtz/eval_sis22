@@ -13,37 +13,41 @@ class _acercanosotrosState extends State<acercanosotros> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Acerca de Nosotros'),
+        backgroundColor: Colors.red,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // Persona 1
-            _buildPersona(
-              'images/johan.jpg',
-              'Johan Daniel',
-              'Muñoz Cortez',
-              'johan503@gmail.com',
-            ),
-            // Separador
-            SizedBox(height: 20.0),
-            // Persona 2
-            _buildPersona(
-              'images/carlos.jpg',
-              'Carlos Samuel',
-              'De Paz Villanueva',
-              'carlos503@gmail.com',
-            ),
-            // Separador
-            SizedBox(height: 20.0),
-            // Persona 3
-            _buildPersona(
-              'images/miguel.jpg',
-              'Miguel antonio',
-              'toloza alvarez',
-              'miguel503@gmail.com',
-            ),
-          ],
+      body: Container(
+        color: Colors.blueAccent,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Persona 1
+              _buildPersona(
+                'images/johan.jpg',
+                'Johan Daniel',
+                'Muñoz Cortez',
+                'johan503@gmail.com',
+              ),
+              // Separador
+              SizedBox(height: 20.0),
+              // Persona 2
+              _buildPersona(
+                'images/carlos.jpg',
+                'Carlos Samuel',
+                'De Paz Villanueva',
+                'carlos503@gmail.com',
+              ),
+              // Separador
+              SizedBox(height: 20.0),
+              // Persona 3
+              _buildPersona(
+                'images/miguel.jpg',
+                'Miguel Antonio',
+                'Toloza Alvarez',
+                'miguel503@gmail.com',
+              ),
+            ],
+          ),
         ),
       ),
     );
