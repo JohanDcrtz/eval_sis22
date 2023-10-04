@@ -19,55 +19,89 @@ class _acercanosotrosState extends State<acercanosotros> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Persona 1
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/mifoto.jpg',
-                      width: 150.0,
-                      height: 150.0,
-                    ),
-                    SizedBox(height: 10.0),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Nombre: Eduardo Vladimir'),
-                    Text('Apellido: Garcia Mestizo'),
-                    Text('Correo: eduardo@example.com'),
-                  ],
-                ),
-              ],
+            _buildPersona(
+              'images/johan.jpg',
+              'Johan Daniel',
+              'Muñoz Cortez',
+              'johan503@gmail.com',
             ),
+            // Separador
+            SizedBox(height: 20.0),
             // Persona 2
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/jairo.jpg',
-                      width: 150.0,
-                      height: 150.0,
-                    ),
-                    SizedBox(height: 10.0),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Nombre: Jairo Enoc'),
-                    Text('Apellido: Lopez Montano'),
-                    Text('Correo: jairo@example.com'),
-                  ],
-                ),
-              ],
+            _buildPersona(
+              'images/carlos.jpg',
+              'Carlos Samuel',
+              'De Paz Villanueva',
+              'carlos503@gmail.com',
+            ),
+            // Separador
+            SizedBox(height: 20.0),
+            // Persona 3
+            _buildPersona(
+              'images/miguel.jpg',
+              'Miguel antonio',
+              'toloza alvarez',
+              'miguel503@gmail.com',
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildPersona(
+      String imagePath, String nombre, String apellido, String correo) {
+    return Card(
+      elevation: 5.0,
+      margin: EdgeInsets.all(10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 2.0,
+                  ),
+                ),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage(imagePath),
+                  radius: 60.0,
+                ),
+              ),
+              SizedBox(height: 10.0),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Nombre: $nombre',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'Apellido: $apellido',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'Correo: $correo',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
