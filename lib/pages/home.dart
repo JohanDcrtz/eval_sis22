@@ -59,8 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              elevation: 4.0,
+              primary: Colors.blue,
+              elevation: 2.0,
             ),
             child: Text(
               'Nuevos Datos',
@@ -78,8 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              elevation: 4.0,
+              primary: Colors.blue,
+              elevation: 2.0,
             ),
             child: Text(
               'Acerca de Nosotros',
@@ -107,14 +107,14 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: snapshot.data?.length,
               itemBuilder: (context, index) {
                 return Card(
-                  elevation: 10,
-                  margin: EdgeInsets.all(15),
+                  elevation: 5,
+                  margin: EdgeInsets.all(10),
                   child: ListTile(
                     title: Text(
                       "${snapshot.data?[index]["nombre"]}",
                       style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.thick,
                         color: Colors.blue,
                       ),
                     ),
