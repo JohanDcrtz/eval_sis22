@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               elevation: 2.0,
             ),
             child: Text(
-              'Acerca de Nosotros',
+              'Sobre Nosotros',
               style: TextStyle(
                 color: Colors.white,
               ),
