@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.blue,
-              elevation: 2.0,
+              elevation: 4.0,
             ),
             child: Text(
               'Acerca de Nosotros',
