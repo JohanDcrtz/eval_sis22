@@ -20,6 +20,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 
+
 class _MyHomePageState extends State<MyHomePage> {
   Future<List> getMensajes() async {
     List chats = [];
@@ -59,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              elevation: 4.0,
+              primary: Colors.gray,
+              elevation: 2.0,
             ),
             child: Text(
               'Nuevos Datos',
@@ -78,8 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              elevation: 4.0,
+              primary: Colors.blue,
+              elevation: 2.0,
             ),
             child: Text(
               'Acerca de Nosotros',
@@ -114,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "${snapshot.data?[index]["nombre"]}",
                       style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.thick,
+                        fontWeight: FontWeight.blod,
                         color: Colors.blue,
                       ),
                     ),
