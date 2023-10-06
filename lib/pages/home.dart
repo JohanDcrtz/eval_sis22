@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
+              primary: Colors.green,
               elevation: 4.0,
             ),
             child: Text(
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
+              primary: Colors.green,
               elevation: 4.0,
             ),
             child: Text(
