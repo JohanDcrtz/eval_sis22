@@ -60,13 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.gray,
-              elevation: 2.0,
+              primary: Colors.Gray,
+              elevation: 4.0,
             ),
             child: Text(
               'Nuevos Datos',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.pink,
               ),
             ),
           ),
@@ -79,13 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
-              elevation: 2.0,
+              primary: Colors.Gray,
+              elevation: 4.0,
             ),
             child: Text(
-              'Sobre Nosotros',
+              'Acerca de Nosotros',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.pink,
               ),
             ),
           ),
